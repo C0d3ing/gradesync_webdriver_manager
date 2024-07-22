@@ -6,6 +6,7 @@ from webdriver_manager.core.driver_cache import DriverCacheManager
 from webdriver_manager.core.manager import DriverManager
 from webdriver_manager.core.os_manager import OperationSystemManager, ChromeType
 from webdriver_manager.drivers.chrome import ChromeDriver
+from pathlib import Path
 
 
 class ChromeDriverManager(DriverManager):
@@ -37,7 +38,7 @@ class ChromeDriverManager(DriverManager):
         )
 
     def install(self) -> str:
-        driver_path = self._get_driver_binary_path(self.driver)
+        driver_path = os.path.join(Path.home, "Library", "Application Support", "gradeSync")
         os.chmod(driver_path, 0o755)
         return driver_path
 
